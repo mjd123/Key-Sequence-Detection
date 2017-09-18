@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+
+<body>
+  <script>
+    let keysPressed = [];
+    let wordToMatch = "cool";
+    let firstRun = false;
+
+    window.addEventListener("keyup", (keydownHandler) => {
+      keysPressed.push(keydownHandler.key);
+      console.log(keysPressed);
+
+      if (keysPressed.length > 3) {
+        keysPressed.splice(-wordToMatch.length - 1, keysPressed.length - wordToMatch.length)
+      }
+      if (keysPressed.join("") == wordToMatch) {
+        cornify_add();
+      }
+    })
+  </script>
+</body>
+
+</html>
